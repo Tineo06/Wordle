@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Adivina la Palabra</title>
+</head>
+
+<body class="bg-white text-black">
+
+    <header class="relative bg-green-200 text-white flex items-center justify-between">
+        <div class="flex-1 flex justify-center">
+            <img class="h-40 w-auto ml-40" src="wordle.png" alt="wordle" />
+        </div>
+
+        <div>
+            <a href="#seccion-juego"
+                class="text-lg font-semibold hover:bg-[#6BAA65] p-2 border-2 rounded border-[#787C7F] text-[#787C7F] mr-10 px-5">JUGAR</a>
+        </div>
+    </header>
+
+
+    <!--Texto sacado de el periodico La Nación-->
+    <main class="p-5">
+        <div class="mb-10 max-w-3xl mx-auto text-justify">
+            <h2 class="text-2xl font-bold mb-4">La historia de Wordle</h2>
+            <p>A pesar de su simpleza, el Wordle se convirtió rápidamente en un fenómeno global: en menos de dos meses
+                pasó de tener 90 usuarios a más de 2 millones. Se trata de un juego de adivinación de palabras con
+                formato de crucigrama, que ha evolucionado significativamente desde su creación. Pero, ¿cuál es su
+                historia?</p>
+            <p>Este divertido juego fue creado por <strong>Josh Wardle</strong>, un ingeniero de Reddit apasionado por
+                los juegos de palabras y los acertijos. Él decidió crear un nuevo juego para sorprender a su pareja, a
+                quien le encantaban los rompecabezas de palabras. Para desarrollarlo, se inspiró en clásicos como el
+                juego del ahorcado con el objetivo de ofrecer una experiencia interactiva. Pero no fue tarea sencilla:
+                Wardle pasó meses perfeccionando el algoritmo que genera las palabras del juego y el sistema de pistas.
+            </p>
+            <p>Para bautizar su creación, eligió un nombre que juega con su apellido y la palabra inglesa
+                <em>"word"</em> (palabra): <strong>Wordle</strong>.
+            </p>
+            <p>Lo interesante es que este juego no depende de una aplicación móvil, sino de una <strong>web accesible
+                    desde cualquier dispositivo</strong>. Además, no recopila datos de los usuarios, no incluye
+                publicidad y no hay planes de que lo haga.</p>
+            <h3 class="text-xl font-semibold mt-6 mb-2">Los comienzos del Wordle</h3>
+            <p>La primera versión de Wordle fue desarrollada en 2013 y tenía solo una jugadora: <strong>Palak
+                    Shah</strong>, la novia de Wardle. Con el tiempo, Shah pasó de ser una simple jugadora a una parte
+                indispensable del proyecto. El confinamiento durante la pandemia los motivó a retomar la idea y
+                mejorarla.</p>
+            <p>Más tarde, Wordle fue adaptado al español por <strong>Daniel Rodríguez</strong>, un colombiano radicado
+                en Texas.</p>
+            <p>El éxito fue tan grande que incluso llamó la atención de <strong>The New York Times</strong>. El
+                periódico, conocido por sus crucigramas y otros juegos de palabras, adquirió Wordle a comienzos de 2022
+                por cerca de <strong>1 millón de dólares</strong>. Aunque la compra generó cierta preocupación entre los
+                fanáticos, el NYT prometió mantenerlo gratuito.</p>
+            <h3 class="text-xl font-semibold mt-6 mb-2">¿Cómo se juega al Wordle?</h3>
+            <p>Wordle es un juego en línea en el que el objetivo es descubrir una <strong>palabra de cinco
+                    letras</strong>. Los jugadores tienen <strong>seis intentos</strong> para adivinarla.</p>
+            <p>Cuando se escribe una palabra:</p>
+            <ul>
+                <li>🟩<strong>Verde:</strong> letra correcta en la posición correcta.</li>
+                <li>🟨<strong>Amarillo:</strong> letra correcta pero en la posición incorrecta.</li>
+                <li>⬛<strong>Gris:</strong> letra incorrecta.</li>
+            </ul>
+            <p>Para evitar que se vuelva adictivo, Wardle diseñó el juego para ofrecer <strong>una única palabra nueva
+                    cada 24 horas</strong>, la misma para todos los jugadores del mundo.</p>
+            <h3 class="text-xl font-semibold mt-6 mb-2">Los beneficios del Wordle</h3>
+            <p>Wordle es elogiado por mejorar las habilidades lingüísticas y cognitivas. Obliga a los jugadores a pensar
+                de forma estratégica y creativa, manteniendo la mente activa de una manera divertida.</p>
+            <p>Además, se ha convertido en un <strong>medio de conexión social</strong>: aunque es un juego individual,
+                genera conversación y comunidad. En redes sociales se comparten estrategias, victorias e incluso
+                frustraciones por fallos.</p>
+            <p>En un mundo cada vez más digital, Wordle ofrece una experiencia simple, sin anuncios ni
+                microtransacciones, que recuerda a los juegos de mesa tradicionales.</p>
+            <h3 class="text-xl font-semibold mt-6 mb-2">Cómo jugar en línea en LN Juegos</h3>
+            <p>Los fanáticos de los juegos mentales pueden disfrutar diariamente de una nueva partida en <strong>LN
+                    Juegos</strong>, la plataforma de pasatiempos de <em>La Nación</em>. Uno de los destacados es
+                <strong>Palabra oculta</strong>, inspirado en Wordle.
+            </p>
+            <p>Además, hay otros juegos para ejercitar la mente como <strong>Crucigrama, Sudoku, Sopa de letras y
+                    Trivias</strong>.</p>
+        </div>
+
+        <section id="seccion-juego" class="mt-10 text-center">
+            <h2 class="text-3xl font-bold mb-4">🎯 ¡Adivina la palabra!</h2>
+            <div id="area-juego" class="flex justify-center flex-col items-center">
+                <p id="area-tiempo" class="text-lg font-semibold mb-4">Tiempo restante: <span
+                        id="mostrar-tiempo">200</span></p>
+
+                <div id="cuadricula-letras" class="mb-4 space-y-1">
+                    <div class="flex justify-center gap-1">
+                        <input id="celda-0-0" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-1" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-2" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-3" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-4" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                    </div>
+                    <div class="flex justify-center gap-1">
+                        <input id="celda-1-0" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-1" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-2" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-3" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-4" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                    </div>
+                    <div class="flex justify-center gap-1">
+                        <input id="celda-2-0" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-1" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-2" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-3" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-4" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                    </div>
+                    <div class="flex justify-center gap-1">
+                        <input id="celda-3-0" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-1" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-2" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-3" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-4" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                    </div>
+                    <div class="flex justify-center gap-1">
+                        <input id="celda-4-0" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-1" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-2" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-3" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-4" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                    </div>
+                    <div class="flex justify-center gap-1">
+                        <input id="celda-5-0" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-1" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-2" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-3" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-4" maxlength="1"
+                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                    </div>
+                </div>
+
+                <button id="boton-comprobar" onclick="verificarIntento()"
+                    class="mt-4 bg-green-500 text-white font-bold py-2 px-6 rounded hover:bg-green-600">Comprobar</button>
+                <p id="mostrar-mensaje" class="mt-4 text-lg font-semibold"></p>
+            </div>
+
+            <div class="flex justify-center gap-1 py-1 mt-5">
+                <button id="teclaA" onclick="agregarLetra('A')"" class=" teclado w-12 h-14 text-center text-2xl
+                    uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">A</button>
+                <button id="teclaB" onclick="agregarLetra('B')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">B</button>
+                <button id="teclaC" onclick="agregarLetra('C')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">C</button>
+                <button id="teclaD" onclick="agregarLetra('D')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">D</button>
+                <button id="teclaE" onclick="agregarLetra('E')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">E</button>
+                <button id="teclaF" onclick="agregarLetra('F')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">F</button>
+                <button id="teclaG" onclick="agregarLetra('G')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">G</button>
+                <button id="teclaH" onclick="agregarLetra('H')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">H</button>
+                <button id="teclaI" onclick="agregarLetra('I')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">I</button>
+                <button id="teclaJ" onclick="agregarLetra('J')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">J</button>
+                <button id="teclaK" onclick="agregarLetra('K')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">K</button>
+                <button id="teclaL" onclick="agregarLetra('L')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">L</button>
+                <button id="teclaM" onclick="agregarLetra('M')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">M</button>
+                <button id="secreto" onclick="botonSecreto()"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">?</button>
+            </div>
+
+            <div class="flex justify-center gap-1 py-3">
+                <button id="teclaN" onclick="agregarLetra('N')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">N</button>
+                <button id="teclaÑ" onclick="agregarLetra('Ñ')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Ñ</button>
+                <button id="teclaO" onclick="agregarLetra('O')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">O</button>
+                <button id="teclaP" onclick="agregarLetra('P')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">P</button>
+                <button id="teclaQ" onclick="agregarLetra('Q')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Q</button>
+                <button id="teclaR" onclick="agregarLetra('R')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">R</button>
+                <button id="teclaS" onclick="agregarLetra('S')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">S</button>
+                <button id="teclaT" onclick="agregarLetra('T')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">T</button>
+                <button id="teclaU" onclick="agregarLetra('U')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">U</button>
+                <button id="teclaV" onclick="agregarLetra('V')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">V</button>
+                <button id="teclaW" onclick="agregarLetra('W')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">W</button>
+                <button id="teclaX" onclick="agregarLetra('X')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">X</button>
+                <button id="teclaY" onclick="agregarLetra('Y')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Y</button>
+                <button id="teclaZ" onclick="agregarLetra('Z')"
+                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Z</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const palabrasPosibles = [
+            "ABETO", "ABRIR", "ACTOR", "AGUDO", "AJENO", "ALADO", "ALBAS", "ALGAS", "ALMAS", "ALTAS",
+            "ALTOS", "AMADO", "AMIGA", "AMIGO", "AMPLA", "AMURA", "ANDAR", "ANIMO", "ANODO", "ANTES",
+            "ARBOL", "ARENA", "ARGOS", "ARMAR", "ARMON", "AROBA", "AROMA", "ARROZ", "ASADO", "ASILO",
+            "ASTRO", "ATAJO", "ATRAS", "AUDIO", "AULLA", "AUNAR", "AUSEN", "AVARO", "AVION", "AYUDA",
+            "AZOTE", "BACAS", "BANDA", "BARCA", "BARRA", "BEBER", "BELLA", "BELLO", "BESAR", "BESOS",
+            "BLUSA", "BOCAS", "BOLAS", "BONOS", "BORDE", "BOTAS", "BRAVO", "BRISA", "BRUJA", "BUENO",
+            "BUFON", "BURRO", "CABAL", "CABEZ", "CABRA", "CAIDA", "CAJAS", "CALAR", "CALMA", "CALOR",
+            "CALZA", "CAMPO", "CANAL", "CANTO", "CARAS", "CARNE", "CARRO", "CASAS", "CAUSA", "CENAR",
+            "CERCA", "CERDO", "CERRO", "CHICO", "CHINA", "CHOZA", "CIELO", "CINCO", "CINTA", "CITAS",
+            "CLAVE", "CLIMA", "COBRA", "COCHE", "COCOA", "COLAR", "COLOR", "COMER", "COMUN", "CORAL",
+            "CORAZ", "CORRO", "CORTE", "COSAS", "COSTA", "CREAR", "CREMA", "CRUDO", "CUART", "CUERO",
+            "CUIDA", "CULPA", "CUMPL", "CURAR", "CURSO", "DADOS", "DANZA", "DARDO", "DATOS", "DECIR",
+            "DEJAR", "DELTA", "DENSO", "DEPOR", "DERRO", "DESEA", "DEUDA", "DIANA", "DICEN", "DIEGO",
+            "DIETA", "DIGNO", "DINAR", "DINOS", "DOLOR", "DONAR", "DONES", "DONDE", "DORMI", "DRAMA",
+            "DUELO", "DUROS", "EBRIO", "ECHAR", "EJEMP", "ELITE", "EMBOL", "EMITE", "ENTRA", "ENVIO",
+            "EPOCA", "ERIZO", "ERROR", "ESCAS", "ESPIN", "ESTAR", "ESTOS", "ETAPA", "EXITO", "EXTRA",
+            "FABRA", "FALDA", "FALTA", "FANGO", "FAROL", "FAUNA", "FELIZ", "FERIA", "FIBRA", "FIEST",
+            "FIGUR", "FILAS", "FINAL", "FINAS", "FINES", "FIRMA", "FLACO", "FLORA", "FONDO", "FORMO",
+            "FOTOS", "FRANC", "FRENO", "FRIAS", "FRUTA", "FUERA", "FUEGO", "FUERA", "FUERT", "FUMAR",
+            "GANAR", "GATOS", "GENTE", "GIRAR", "GITAR", "GOZAR", "GRANO", "GRATO", "GRIFO", "GRUPO",
+            "GUAPA", "GUAPO", "GUSTA", "HABER", "HABLA", "HACER", "HACIA", "HIELO", "HIGOS", "HIJOS",
+            "HORAS", "HONOR", "HOJAS", "HUECO", "HUEVO", "HUMOS", "IDEAL", "IGUAL", "IMPAR", "INFIN",
+            "ISLAS", "JABON", "JOVEN", "JUEGO", "JUEZP", "JUGAR", "LACOS", "LADOS", "LAGOS", "LAMAS",
+            "LARGO", "LATIR", "LECHE", "LEJOS", "LETRA", "LIBRA", "LIBRO", "LIDER", "LIGER", "LIMON",
+            "LLAMA", "LLAVO", "LLENO", "LLORA", "LUCES", "LUCHA", "LUGAR", "LUZCA", "MADRE", "MAGIA",
+            "MAIZO", "MALOS", "MANOS", "MANTA", "MARCH", "MARCO", "MARTE", "MASAS", "MAYOR", "MECER",
+            "MEDIA", "MENOR", "METAL", "METAS", "METER", "MIEDO", "MIENT", "MIRAR", "MODAS", "MOLER",
+            "MOMIA", "MONTE", "MORAL", "MORIR", "MOTOR", "MOVER", "MUCHO", "MUEVE", "MUJER", "MUNDO",
+            "MURAL", "MUSGO", "MUSLO", "NACER", "NADAR", "NEGAR", "NEGRO", "NERVI", "NIEVE", "NOBLE",
+            "NOCHE", "NORMA", "NOTAS", "NOVIA", "NOVIO", "NUDOS", "NUBES", "NUMER", "OBRAS", "OCASO",
+            "OIDOS", "OJEAR", "OLIVO", "OLMOS", "OLVID", "ONDAA", "OPINA", "ORDEN", "OREJA", "ORGAN",
+            "OROZO", "OTROS", "OVEJA", "PADRE", "PAGAR", "PAISA", "PALMA", "PANES", "PAPEL", "PARAR",
+            "PARCA", "PARED", "PARIR", "PARTE", "PASAR", "PASEO", "PASTA", "PATOS", "PECES", "PECHO",
+            "PEDIR", "PEINE", "PELAO", "PELAR", "PERLA", "PERRO", "PIEZA", "PIENS", "PINTA", "PINTO",
+            "PIQUE", "PISAR", "PISOS", "PLANO", "PLATA", "PLAZA", "PLENO", "PLUMA", "POBLA", "PODER",
+            "POLEN", "POLVO", "PONER", "PORTE", "POSAR", "POSTE", "POTRO", "PREMO", "PRIMA", "PRIMO",
+            "PROBA", "PRUEB", "PUEDE", "PUESO", "PULSO", "PUNTA", "PUNTO", "PUROS", "QUEJA", "QUESO",
+            "QUIEN", "RABIA", "RADIO", "RAMAS", "RANGO", "RATON", "RAYOS", "REINA", "REINO", "RENTA",
+            "RESTA", "REYES", "RICOS", "RIEGO", "RIMAR", "RINDE", "RIZAR", "ROCAS", "RODEO", "RODIO",
+            "ROJAS", "ROMBO", "ROMPE", "RONCO", "RONDA", "ROSAS", "RUBIA", "RUBIO", "RUIDO", "RUINA",
+            "RURAL", "RUSAS", "SABER", "SABIO", "SABOR", "SALAR", "SALIR", "SALON", "SALTA", "SALUD",
+            "SALVA", "SALVO", "SANAR", "SANTO", "SARTA", "SATIN", "SAUCE", "SECAR", "SEDAL", "SELVA",
+            "SENTI", "SERIO", "SERVI", "SEXTO", "SIENA", "SIGUE", "SILLA", "SOBRE", "SOLDO", "SOLAR",
+            "SOLES", "SOLLO", "SOMOS", "SONAR", "SONDA", "SONRE", "SORTE", "SUBIR", "SUAVE", "SUELO",
+            "SUEÑO", "SUITE", "SUMAR", "SURCO", "SUTIL", "TABLA", "TACOS", "TALLA", "TAMBO", "TANTO",
+            "TAPAR", "TAPAS", "TARDA", "TARDE", "TAREA", "TEJER", "TEMAS", "TEMOR", "TENAZ", "TENER",
+            "TERSO", "TESIS", "TESOR", "TESTO", "TIGRE", "TINTE", "TIPOS", "TIROS", "TODAS", "TODOS",
+            "TOMAR", "TONOS", "TORRE", "TORZO", "TOCAR", "TODAS", "TOMOS", "TORTA", "TOSCO", "TRENZ",
+            "TRIGO", "TRONO", "TROPA", "TRUFA", "TULIP", "TUNEL", "TURNO", "UNION", "UNIDO", "URGEN",
+            "USADO", "USUAL", "VALER", "VALOR", "VAPOR", "VARIO", "VASOS", "VECES", "VELAS", "VELLO",
+            "VENDA", "VENIR", "VENTA", "VERBO", "VERSO", "VIAJE", "VIDAS", "VIDEO", "VIEJA", "VIEJO",
+            "VIGOR", "VISTA", "VIVIR", "VOCES", "VOLAR", "VOLVI", "VOTOS", "VUELO", "YATES", "YERBA",
+            "YUNTA", "ZAFAR", "ZONAS", "ZORRO", "ZUMBA", "ALCES", "ARIES", "CERCA", "DURAR", "FUMAR",
+            "HABLA", "LIMPI", "NUBLA", "PESCA", "RIEGO", "SUBEN", "TOMAS", "VIVEN", "SIRVE", "BUSCA",
+            "CAERA", "LLOVI", "CORRE", "GANAS", "CAMBI", "CREES", "SABEN", "SIRVO", "ROMPO", "HUELE",
+            "DEBER", "LENTO", "RAPTO", "LISTO", "CIEGA", "CORTA", "LARGO", "GRUES", "DUROS", "LUCID",
+            "PLENO", "PLUMA", "PESOS", "JUEZA", "SIGLA", "CURVA", "SOPLA", "MUECA", "BURLA", "PINZA",
+            "JURAR", "MEJOR", "PESAR", "MOVER", "ROBAR", "PONLO", "CERDO", "TRENZ", "GUSTO", "CAUSA",
+            "RISAS", "NOTAR", "TOROS", "OCULT", "SOPLO", "ABRIR", "CIEGO", "GRANO", "TIRAR", "CAIDA",
+            "RAPID", "FINAS", "LLENO", "RUMOR", "HORNO", "OLIVA", "VIUDA", "SIRVE", "FLORA", "LECHE",
+            "RUMBO", "CELDA", "GRUES", "LIGER", "FEROZ", "ALTAS", "MUROS", "FONDO", "AMADO", "BUENO",
+            "RUMOR", "TERCO", "ALTOS", "METAS", "LARGO", "LENTA", "FUERA", "PESCA", "CERCA", "LEJOS"
+        ];
+        const palabraSecreta = palabrasPosibles[Math.round(Math.random() * palabrasPosibles.length)];
+        console.log("Palabra secreta:", palabraSecreta); //para hacer pruebas
+
+        let intentoActual = 0;
+        let celdaColumnaActual = 0;
+        let tiempo = 200
+        let idDelTemporizador;
+
+        const mostrarMensaje = document.getElementById('mostrar-mensaje');
+        const mostrarTiempo = document.getElementById('mostrar-tiempo');
+        const botonComprobar = document.getElementById('boton-comprobar');
+
+        function actualizarReloj() {
+            if (tiempo <= 0) {
+                clearInterval(idDelTemporizador);
+                mostrarMensaje.textContent = `¡Se acabó el tiempo! la palabra secreta es: ${palabraSecreta}`;
+                deshabilitarTodo();
+                return;
+            }
+            mostrarTiempo.textContent = tiempo;
+            tiempo--;
+        }
+
+        function agregarLetra(letra) {
+            if (celdaColumnaActual < 5) {
+                const inputActual = document.getElementById(`celda-${intentoActual}-${celdaColumnaActual}`);
+
+                if (inputActual) {
+                    inputActual.value = letra;
+                    celdaColumnaActual++
+                    const siguienteInput = document.getElementById(`celda-${intentoActual}-${celdaColumnaActual}`);
+                    if (siguienteInput) {
+                        siguienteInput.focus(); //focus sirve para mantener el puntero en el input
+                    }
+                }
+            }
+        }
+
+        function botonSecreto() {
+            alert("Dale a Inspeccionar y mira la consola 🤫")
+        }
+
+
+        function deshabilitarTodo() {
+            botonComprobar.disabled = true;
+            for (let fila = 0; fila < 6; fila++) {
+                for (let col = 0; col < 5; col++) {
+                    const inputElemento = document.getElementById(`celda-${fila}-${col}`);
+                    if (inputElemento) {
+                        inputElemento.disabled = true;
+                    }
+                }
+            }
+        }
+
+        function verificarIntento() {
+            let palabraIntroducida = "";
+            let filaCompleta = true;
+
+            for (let columna = 0; columna < 5; columna++) {
+                const inputActual = document.getElementById(`celda-${intentoActual}-${columna}`);
+                if (inputActual && inputActual.value.trim() !== '') {
+                    palabraIntroducida += inputActual.value.toUpperCase();
+                } else {
+                    filaCompleta = false;
+                    break;
+                }
+            }
+
+            if (!filaCompleta) {
+                mostrarMensaje.innerHTML = "Por favor, completa las 5 letras";
+                return;
+            }
+
+            for (let columna = 0; columna < 5; columna++) {
+                const inputActual = document.getElementById(`celda-${intentoActual}-${columna}`);
+                const letra = palabraIntroducida[columna];
+
+                if (inputActual) {
+                    inputActual.disabled = true;
+
+                    if (letra === palabraSecreta[columna]) {
+                        inputActual.style.backgroundColor = "#22c55e";//verde
+                        inputActual.style.color = "white";
+                    } else if (palabraSecreta.includes(letra)) {
+                        inputActual.style.backgroundColor = "#facc15";//amarillo
+                        inputActual.style.color = "white";
+                    } else {
+                        inputActual.style.backgroundColor = "#9ca3af";//gris
+                        inputActual.style.color = "white";
+                    }
+                }
+            }
+
+            if (palabraIntroducida === palabraSecreta) {
+                mostrarMensaje.innerHTML = "¡Correcto! ¡Has ganado!";
+                clearInterval(idDelTemporizador);
+                botonComprobar.disabled = true;
+            } else {
+                intentoActual++;
+                celdaColumnaActual = 0;
+                if (intentoActual < 6) {
+                    mostrarMensaje.innerHTML = "Sigue intentando...";
+                } else {
+                    mostrarMensaje.innerHTML = `¡Perdiste! La palabra era: ${palabraSecreta}`;
+                    clearInterval(idDelTemporizador);
+                    botonComprobar.disabled = true;
+                }
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Enter") {
+                verificarIntento();
+            }
+        });
+
+        const celdas = document.querySelectorAll('.campo-letra');
+        celdas.forEach((input, i) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1) {
+                    const fila = Math.floor(i / 5);
+                    const col = i % 5;
+                    const siguiente = document.getElementById(`celda-${fila}-${col + 1}`);
+                    if (siguiente) siguiente.focus();
+                }
+            });
+
+            // Permite moverse con retroceso
+            input.addEventListener('keydown', (e) => {
+                if (e.key === "Backspace" && input.value === "") {
+                    const fila = Math.floor(i / 5);
+                    const col = i % 5;
+                    const anterior = document.getElementById(`celda-${fila}-${col - 1}`);
+                    if (anterior) anterior.focus();
+                }
+            });
+        });
+        idDelTemporizador = setInterval(actualizarReloj, 1000);
+    </script>
+</body>
+
+</html>
