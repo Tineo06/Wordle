@@ -7,24 +7,39 @@
     <link rel="icon" href="wordle.png?v=2" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Adivina la Palabra</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wordle-green': '#6AAA64',
+                        'wordle-yellow': '#C9B458',
+                        'wordle-gray': '#787C7F',
+                        'correct': '#22c55e', // Tailwind green-500
+                        'present': '#facc15', // Tailwind yellow-400
+                        'absent': '#9ca3af',  // Tailwind gray-400
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
 <body class="bg-white text-black">
 
-    <header class="relative bg-green-200 text-white flex items-center justify-between">
-        <div class="flex-1 flex justify-center">
-            <img class="h-40 w-auto ml-40" src="wordle.png" alt="wordle" />
+    <header class="bg-wordle-green text-white flex flex-col sm:flex-row items-center justify-between p-4">
+        <div class="flex items-center justify-center w-full sm:w-auto mb-4 sm:mb-0">
+            <img class="h-16 w-auto" src="wordle.png" alt="wordle" />
+            <h1 class="text-3xl font-bold ml-4 text-white">Adivina la Palabra</h1>
         </div>
 
-        <div>
+        <div class="w-full sm:w-auto">
             <a href="#seccion-juego"
-                class="text-lg font-semibold hover:bg-[#6BAA65] p-2 border-2 rounded border-[#787C7F] text-[#787C7F] mr-10 px-5">JUGAR</a>
+                class="block text-center text-lg font-semibold hover:bg-[#6BAA65] p-2 border-2 rounded border-wordle-gray text-wordle-gray bg-white px-5 transition duration-300 ease-in-out">JUGAR</a>
         </div>
     </header>
 
-
-    <!--Texto sacado de el periodico La Nación-->
-    <main class="p-5">
+    <main class="p-4 sm:p-5">
         <div class="mb-10 max-w-3xl mx-auto text-justify">
             <h2 class="text-2xl font-bold mb-4">La historia de Wordle</h2>
             <p>A pesar de su simpleza, el Wordle se convirtió rápidamente en un fenómeno global: en menos de dos meses
@@ -41,11 +56,11 @@
                 <em>"word"</em> (palabra): <strong>Wordle</strong>.
             </p>
             <p>Lo interesante es que este juego no depende de una aplicación móvil, sino de una <strong>web accesible
-                    desde cualquier dispositivo</strong>. Además, no recopila datos de los usuarios, no incluye
+                desde cualquier dispositivo</strong>. Además, no recopila datos de los usuarios, no incluye
                 publicidad y no hay planes de que lo haga.</p>
             <h3 class="text-xl font-semibold mt-6 mb-2">Los comienzos del Wordle</h3>
             <p>La primera versión de Wordle fue desarrollada en 2013 y tenía solo una jugadora: <strong>Palak
-                    Shah</strong>, la novia de Wardle. Con el tiempo, Shah pasó de ser una simple jugadora a una parte
+                Shah</strong>, la novia de Wardle. Con el tiempo, Shah pasó de ser una simple jugadora a una parte
                 indispensable del proyecto. El confinamiento durante la pandemia los motivó a retomar la idea y
                 mejorarla.</p>
             <p>Más tarde, Wordle fue adaptado al español por <strong>Daniel Rodríguez</strong>, un colombiano radicado
@@ -56,7 +71,7 @@
                 fanáticos, el NYT prometió mantenerlo gratuito.</p>
             <h3 class="text-xl font-semibold mt-6 mb-2">¿Cómo se juega al Wordle?</h3>
             <p>Wordle es un juego en línea en el que el objetivo es descubrir una <strong>palabra de cinco
-                    letras</strong>. Los jugadores tienen <strong>seis intentos</strong> para adivinarla.</p>
+                letras</strong>. Los jugadores tienen <strong>seis intentos</strong> para adivinarla.</p>
             <p>Cuando se escribe una palabra:</p>
             <ul>
                 <li>🟩<strong>Verde:</strong> letra correcta en la posición correcta.</li>
@@ -64,7 +79,7 @@
                 <li>⬛<strong>Gris:</strong> letra incorrecta.</li>
             </ul>
             <p>Para evitar que se vuelva adictivo, Wardle diseñó el juego para ofrecer <strong>una única palabra nueva
-                    cada 24 horas</strong>, la misma para todos los jugadores del mundo.</p>
+                cada 24 horas</strong>, la misma para todos los jugadores del mundo.</p>
             <h3 class="text-xl font-semibold mt-6 mb-2">Los beneficios del Wordle</h3>
             <p>Wordle es elogiado por mejorar las habilidades lingüísticas y cognitivas. Obliga a los jugadores a pensar
                 de forma estratégica y creativa, manteniendo la mente activa de una manera divertida.</p>
@@ -75,14 +90,14 @@
                 microtransacciones, que recuerda a los juegos de mesa tradicionales.</p>
             <h3 class="text-xl font-semibold mt-6 mb-2">Cómo jugar en línea en LN Juegos</h3>
             <p>Los fanáticos de los juegos mentales pueden disfrutar diariamente de una nueva partida en <strong>LN
-                    Juegos</strong>, la plataforma de pasatiempos de <em>La Nación</em>. Uno de los destacados es
+                Juegos</strong>, la plataforma de pasatiempos de <em>La Nación</em>. Uno de los destacados es
                 <strong>Palabra oculta</strong>, inspirado en Wordle.
             </p>
             <p>Además, hay otros juegos para ejercitar la mente como <strong>Crucigrama, Sudoku, Sopa de letras y
-                    Trivias</strong>.</p>
+                Trivias</strong>.</p>
         </div>
 
-        <section id="seccion-juego" class="mt-10 text-center">
+        <section id="seccion-juego" class="mt-10 text-center max-w-3xl mx-auto">
             <h2 class="text-3xl font-bold mb-4">🎯 ¡Adivina la palabra!</h2>
             <div id="area-juego" class="flex justify-center flex-col items-center">
                 <p id="area-tiempo" class="text-lg font-semibold mb-4">Tiempo restante: <span
@@ -91,143 +106,145 @@
                 <div id="cuadricula-letras" class="mb-4 space-y-1">
                     <div class="flex justify-center gap-1">
                         <input id="celda-0-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500 focus:outline-none focus:border-wordle-green" />
                         <input id="celda-0-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500 focus:outline-none focus:border-wordle-green" />
                         <input id="celda-0-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500 focus:outline-none focus:border-wordle-green" />
                         <input id="celda-0-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500 focus:outline-none focus:border-wordle-green" />
                         <input id="celda-0-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500 focus:outline-none focus:border-wordle-green" />
                     </div>
                     <div class="flex justify-center gap-1">
-                        <input id="celda-1-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-0" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-1" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-2" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-3" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-4" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
                     <div class="flex justify-center gap-1">
-                        <input id="celda-2-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-0" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-1" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-2" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-3" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-4" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
                     <div class="flex justify-center gap-1">
-                        <input id="celda-3-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-0" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-1" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-2" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-3" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-4" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
                     <div class="flex justify-center gap-1">
-                        <input id="celda-4-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-0" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-1" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-2" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-3" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-4" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
                     <div class="flex justify-center gap-1">
-                        <input id="celda-5-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-0" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-1" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-2" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-3" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-4" maxlength="1" disabled
+                            class="campo-letra w-10 h-10 sm:w-12 sm:h-12 text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
                 </div>
 
                 <button id="boton-comprobar" onclick="verificarIntento()"
-                    class="mt-4 bg-green-500 text-white font-bold py-2 px-6 rounded hover:bg-green-600">Comprobar</button>
+                    class="mt-4 bg-wordle-green text-white font-bold py-2 px-6 rounded hover:bg-green-600 transition duration-300 ease-in-out">Comprobar</button>
                 <p id="mostrar-mensaje" class="mt-4 text-lg font-semibold"></p>
             </div>
 
-            <div class="flex justify-center gap-1 py-1 mt-5">
-                <button id="teclaA" onclick="agregarLetra('A')"" class=" teclado w-12 h-14 text-center text-2xl
-                    uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">A</button>
-                <button id="teclaB" onclick="agregarLetra('B')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">B</button>
-                <button id="teclaC" onclick="agregarLetra('C')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">C</button>
-                <button id="teclaD" onclick="agregarLetra('D')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">D</button>
-                <button id="teclaE" onclick="agregarLetra('E')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">E</button>
-                <button id="teclaF" onclick="agregarLetra('F')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">F</button>
-                <button id="teclaG" onclick="agregarLetra('G')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">G</button>
-                <button id="teclaH" onclick="agregarLetra('H')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">H</button>
-                <button id="teclaI" onclick="agregarLetra('I')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">I</button>
-                <button id="teclaJ" onclick="agregarLetra('J')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">J</button>
-                <button id="teclaK" onclick="agregarLetra('K')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">K</button>
-                <button id="teclaL" onclick="agregarLetra('L')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">L</button>
-                <button id="teclaM" onclick="agregarLetra('M')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">M</button>
-                <button id="secreto" onclick="botonSecreto()"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">?</button>
-            </div>
+            <div class="max-w-xl mx-auto">
+                <div class="flex justify-center gap-1 py-1 mt-5 flex-wrap">
+                    <button id="teclaA" onclick="agregarLetra('A')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">A</button>
+                    <button id="teclaB" onclick="agregarLetra('B')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">B</button>
+                    <button id="teclaC" onclick="agregarLetra('C')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">C</button>
+                    <button id="teclaD" onclick="agregarLetra('D')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">D</button>
+                    <button id="teclaE" onclick="agregarLetra('E')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">E</button>
+                    <button id="teclaF" onclick="agregarLetra('F')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">F</button>
+                    <button id="teclaG" onclick="agregarLetra('G')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">G</button>
+                    <button id="teclaH" onclick="agregarLetra('H')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">H</button>
+                    <button id="teclaI" onclick="agregarLetra('I')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">I</button>
+                    <button id="teclaJ" onclick="agregarLetra('J')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">J</button>
+                    <button id="teclaK" onclick="agregarLetra('K')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">K</button>
+                    <button id="teclaL" onclick="agregarLetra('L')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">L</button>
+                    <button id="teclaM" onclick="agregarLetra('M')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">M</button>
+                    <button id="secreto" onclick="botonSecreto()"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">?</button>
+                </div>
 
-            <div class="flex justify-center gap-1 py-3">
-                <button id="teclaN" onclick="agregarLetra('N')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">N</button>
-                <button id="teclaÑ" onclick="agregarLetra('Ñ')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Ñ</button>
-                <button id="teclaO" onclick="agregarLetra('O')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">O</button>
-                <button id="teclaP" onclick="agregarLetra('P')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">P</button>
-                <button id="teclaQ" onclick="agregarLetra('Q')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Q</button>
-                <button id="teclaR" onclick="agregarLetra('R')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">R</button>
-                <button id="teclaS" onclick="agregarLetra('S')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">S</button>
-                <button id="teclaT" onclick="agregarLetra('T')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">T</button>
-                <button id="teclaU" onclick="agregarLetra('U')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">U</button>
-                <button id="teclaV" onclick="agregarLetra('V')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">V</button>
-                <button id="teclaW" onclick="agregarLetra('W')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">W</button>
-                <button id="teclaX" onclick="agregarLetra('X')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">X</button>
-                <button id="teclaY" onclick="agregarLetra('Y')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Y</button>
-                <button id="teclaZ" onclick="agregarLetra('Z')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Z</button>
+                <div class="flex justify-center gap-1 py-3 flex-wrap">
+                    <button id="teclaN" onclick="agregarLetra('N')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">N</button>
+                    <button id="teclaÑ" onclick="agregarLetra('Ñ')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">Ñ</button>
+                    <button id="teclaO" onclick="agregarLetra('O')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">O</button>
+                    <button id="teclaP" onclick="agregarLetra('P')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">P</button>
+                    <button id="teclaQ" onclick="agregarLetra('Q')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">Q</button>
+                    <button id="teclaR" onclick="agregarLetra('R')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">R</button>
+                    <button id="teclaS" onclick="agregarLetra('S')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">S</button>
+                    <button id="teclaT" onclick="agregarLetra('T')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">T</button>
+                    <button id="teclaU" onclick="agregarLetra('U')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">U</button>
+                    <button id="teclaV" onclick="agregarLetra('V')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">V</button>
+                    <button id="teclaW" onclick="agregarLetra('W')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">W</button>
+                    <button id="teclaX" onclick="agregarLetra('X')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">X</button>
+                    <button id="teclaY" onclick="agregarLetra('Y')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">Y</button>
+                    <button id="teclaZ" onclick="agregarLetra('Z')"
+                        class="teclado w-8 h-10 sm:w-10 sm:h-12 text-center text-lg uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500 hover:bg-slate-600">Z</button>
+                </div>
             </div>
         </section>
     </main>
@@ -308,11 +325,22 @@
         const mostrarMensaje = document.getElementById('mostrar-mensaje');
         const mostrarTiempo = document.getElementById('mostrar-tiempo');
         const botonComprobar = document.getElementById('boton-comprobar');
+        const celdas = document.querySelectorAll('.campo-letra');
+
+        function habilitarFilaActual() {
+            for (let col = 0; col < 5; col++) {
+                const inputElemento = document.getElementById(`celda-${intentoActual}-${col}`);
+                if (inputElemento) {
+                    inputElemento.disabled = false;
+                    inputElemento.focus();
+                }
+            }
+        }
 
         function actualizarReloj() {
             if (tiempo <= 0) {
                 clearInterval(idDelTemporizador);
-                mostrarMensaje.textContent = `¡Se acabó el tiempo! la palabra secreta es: ${palabraSecreta}`;
+                mostrarMensaje.textContent = `¡Se acabó el tiempo! La palabra secreta es: ${palabraSecreta}`;
                 deshabilitarTodo();
                 return;
             }
@@ -321,10 +349,12 @@
         }
 
         function agregarLetra(letra) {
+            if (intentoActual >= 6) return; // Evitar entrada si el juego ha terminado
+
             if (celdaColumnaActual < 5) {
                 const inputActual = document.getElementById(`celda-${intentoActual}-${celdaColumnaActual}`);
 
-                if (inputActual) {
+                if (inputActual && !inputActual.disabled) {
                     inputActual.value = letra;
                     celdaColumnaActual++
                     const siguienteInput = document.getElementById(`celda-${intentoActual}-${celdaColumnaActual}`);
@@ -342,6 +372,7 @@
 
         function deshabilitarTodo() {
             botonComprobar.disabled = true;
+            document.querySelectorAll('.teclado').forEach(btn => btn.disabled = true);
             for (let fila = 0; fila < 6; fila++) {
                 for (let col = 0; col < 5; col++) {
                     const inputElemento = document.getElementById(`celda-${fila}-${col}`);
@@ -353,6 +384,8 @@
         }
 
         function verificarIntento() {
+            if (intentoActual >= 6) return;
+
             let palabraIntroducida = "";
             let filaCompleta = true;
 
@@ -371,55 +404,118 @@
                 return;
             }
 
-            for (let columna = 0; columna < 5; columna++) {
-                const inputActual = document.getElementById(`celda-${intentoActual}-${columna}`);
-                const letra = palabraIntroducida[columna];
+            // Verificar la palabra y actualizar la cuadrícula
+            const palabraSecretaArray = palabraSecreta.split('');
+            const intentoArray = palabraIntroducida.split('');
+            const coincidencias = new Array(5).fill('gris'); // 'gris', 'amarillo', 'verde'
 
-                if (inputActual) {
-                    inputActual.disabled = true;
+            // Primer paso: Buscar letras verdes (posición correcta)
+            for (let col = 0; col < 5; col++) {
+                const inputActual = document.getElementById(`celda-${intentoActual}-${col}`);
+                if (intentoArray[col] === palabraSecretaArray[col]) {
+                    coincidencias[col] = 'verde';
+                    inputActual.style.backgroundColor = "var(--correct)"; // Color 'correct' de tailwind.config
+                    inputActual.style.borderColor = "var(--correct)";
+                    inputActual.style.color = "white";
+                    intentoArray[col] = null; // Marcar la letra como utilizada
+                    palabraSecretaArray[col] = null; // Marcar la letra como utilizada
+                }
+                inputActual.disabled = true;
+            }
 
-                    if (letra === palabraSecreta[columna]) {
-                        inputActual.style.backgroundColor = "#22c55e";//verde
+            // Segundo paso: Buscar letras amarillas (letra correcta, posición incorrecta)
+            for (let col = 0; col < 5; col++) {
+                const inputActual = document.getElementById(`celda-${intentoActual}-${col}`);
+                if (coincidencias[col] !== 'verde') { // Solo si no es verde ya
+                    const letra = inputActual.value.toUpperCase();
+                    const indexEnSecreta = palabraSecretaArray.findIndex(s => s === letra);
+                    
+                    if (indexEnSecreta !== -1) {
+                        coincidencias[col] = 'amarillo';
+                        inputActual.style.backgroundColor = "var(--present)"; // Color 'present'
+                        inputActual.style.borderColor = "var(--present)";
                         inputActual.style.color = "white";
-                    } else if (palabraSecreta.includes(letra)) {
-                        inputActual.style.backgroundColor = "#facc15";//amarillo
-                        inputActual.style.color = "white";
+                        palabraSecretaArray[indexEnSecreta] = null; // Marcar la letra como utilizada
                     } else {
-                        inputActual.style.backgroundColor = "#9ca3af";//gris
+                        coincidencias[col] = 'gris';
+                        inputActual.style.backgroundColor = "var(--absent)"; // Color 'absent'
+                        inputActual.style.borderColor = "var(--absent)";
                         inputActual.style.color = "white";
                     }
                 }
             }
+            
+            // Actualizar el teclado virtual (opcional, pero mejora la experiencia)
+            for (let col = 0; col < 5; col++) {
+                const letra = palabraIntroducida[col];
+                const tecla = document.getElementById(`tecla${letra}`);
+                if (tecla) {
+                    if (coincidencias[col] === 'verde') {
+                        tecla.style.backgroundColor = "var(--correct)";
+                    } else if (coincidencias[col] === 'amarillo' && tecla.style.backgroundColor !== "var(--correct)") {
+                        tecla.style.backgroundColor = "var(--present)";
+                    } else if (coincidencias[col] === 'gris' && tecla.style.backgroundColor !== "var(--correct)" && tecla.style.backgroundColor !== "var(--present)") {
+                        tecla.style.backgroundColor = "var(--absent)";
+                    }
+                }
+            }
+
 
             if (palabraIntroducida === palabraSecreta) {
                 mostrarMensaje.innerHTML = "¡Correcto! ¡Has ganado!";
                 clearInterval(idDelTemporizador);
-                botonComprobar.disabled = true;
+                deshabilitarTodo();
             } else {
                 intentoActual++;
                 celdaColumnaActual = 0;
                 if (intentoActual < 6) {
                     mostrarMensaje.innerHTML = "Sigue intentando...";
+                    habilitarFilaActual();
+                    // Enfocar el primer input de la nueva fila
+                    const primerInputNuevaFila = document.getElementById(`celda-${intentoActual}-0`);
+                    if (primerInputNuevaFila) primerInputNuevaFila.focus();
+
                 } else {
                     mostrarMensaje.innerHTML = `¡Perdiste! La palabra era: ${palabraSecreta}`;
                     clearInterval(idDelTemporizador);
-                    botonComprobar.disabled = true;
+                    deshabilitarTodo();
                 }
             }
         }
 
+        // Eventos de teclado físicos
         document.addEventListener('keydown', (e) => {
-            if (e.key === "Enter") {
-                verificarIntento();
+            if (!botonComprobar.disabled) {
+                const key = e.key.toUpperCase();
+                const letraRegex = /^[A-ZÑ]$/; // Permite A-Z y Ñ
+
+                if (e.key === "Enter") {
+                    verificarIntento();
+                    e.preventDefault();
+                } else if (letraRegex.test(key) && key.length === 1) {
+                    agregarLetra(key);
+                    e.preventDefault();
+                } else if (e.key === "Backspace") {
+                    // La lógica de Backspace para el foco ya está en el listener de las celdas, 
+                    // pero para el valor se debe hacer aquí o en el mismo listener de celdas
+                    // Lo dejamos en el listener de celdas ya que maneja la posición de forma implícita.
+                }
             }
         });
 
-        const celdas = document.querySelectorAll('.campo-letra');
+
+        // Lógica de navegación entre celdas al escribir y borrar
         celdas.forEach((input, i) => {
             input.addEventListener('input', () => {
-                if (input.value.length === 1) {
-                    const fila = Math.floor(i / 5);
-                    const col = i % 5;
+                // Forzar mayúsculas y limitar a 1 carácter
+                input.value = input.value.toUpperCase().slice(0, 1);
+
+                // Mover el foco si se está escribiendo en la fila actual
+                const fila = parseInt(input.id.split('-')[1]);
+                const col = parseInt(input.id.split('-')[2]);
+
+                if (fila === intentoActual && input.value.length === 1) {
+                    celdaColumnaActual = col + 1;
                     const siguiente = document.getElementById(`celda-${fila}-${col + 1}`);
                     if (siguiente) siguiente.focus();
                 }
@@ -427,15 +523,41 @@
 
             // Permite moverse con retroceso
             input.addEventListener('keydown', (e) => {
-                if (e.key === "Backspace" && input.value === "") {
-                    const fila = Math.floor(i / 5);
-                    const col = i % 5;
-                    const anterior = document.getElementById(`celda-${fila}-${col - 1}`);
-                    if (anterior) anterior.focus();
+                const fila = parseInt(input.id.split('-')[1]);
+                const col = parseInt(input.id.split('-')[2]);
+
+                if (e.key === "Backspace") {
+                    if (fila === intentoActual) {
+                        if (input.value === "" && col > 0) {
+                            // Si la celda está vacía, mover a la anterior y borrar su valor
+                            const anterior = document.getElementById(`celda-${fila}-${col - 1}`);
+                            if (anterior) {
+                                anterior.focus();
+                                anterior.value = "";
+                                celdaColumnaActual = col - 1;
+                                e.preventDefault();
+                            }
+                        } else if (input.value !== "") {
+                            // Si la celda tiene valor, borrarlo y mantener el foco
+                            input.value = "";
+                            celdaColumnaActual = col;
+                            e.preventDefault();
+                        }
+                    } else {
+                        e.preventDefault(); // Evitar cualquier acción si no es la fila actual
+                    }
                 }
             });
         });
+
+
+        // Inicialización
+        habilitarFilaActual();
         idDelTemporizador = setInterval(actualizarReloj, 1000);
+        // Establecer las variables CSS para los colores
+        document.documentElement.style.setProperty('--correct', '#22c55e');
+        document.documentElement.style.setProperty('--present', '#facc15');
+        document.documentElement.style.setProperty('--absent', '#9ca3af');
     </script>
 </body>
 
