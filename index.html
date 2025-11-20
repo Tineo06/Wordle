@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+< lang="es">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,22 +9,19 @@
     <title>Adivina la Palabra</title>
 </head>
 
-<body class="bg-white text-black">
+< class="bg-white text-black">
 
-    <header class="relative bg-green-200 text-white flex items-center justify-between">
-        <div class="flex-1 flex justify-center">
-            <img class="h-40 w-auto ml-40" src="wordle.png" alt="wordle" />
+    <header class="relative bg-green-200 text-white flex flex-col md:flex-row items-center justify-between p-4">
+        <div class="flex-1 flex justify-center mb-4 md:mb-0">
+            <img class="h-32 md:h-40 w-auto" src="wordle.png" alt="wordle" />
         </div>
-
         <div>
             <a href="#seccion-juego"
-                class="text-lg font-semibold hover:bg-[#6BAA65] p-2 border-2 rounded border-[#787C7F] text-[#787C7F] mr-10 px-5">JUGAR</a>
+                class="text-lg font-semibold hover:bg-[#6BAA65] p-2 border-2 rounded border-[#787C7F] text-[#787C7F] md:mr-10 px-5">JUGAR</a>
         </div>
     </header>
 
-
-    <!--Texto sacado de el periodico La Nación-->
-    <main class="p-5">
+    <main class="p-4 md:p-5">
         <div class="mb-10 max-w-3xl mx-auto text-justify">
             <h2 class="text-2xl font-bold mb-4">La historia de Wordle</h2>
             <p>A pesar de su simpleza, el Wordle se convirtió rápidamente en un fenómeno global: en menos de dos meses
@@ -58,7 +55,7 @@
             <p>Wordle es un juego en línea en el que el objetivo es descubrir una <strong>palabra de cinco
                     letras</strong>. Los jugadores tienen <strong>seis intentos</strong> para adivinarla.</p>
             <p>Cuando se escribe una palabra:</p>
-            <ul>
+            <ul class="list-disc list-inside">
                 <li>🟩<strong>Verde:</strong> letra correcta en la posición correcta.</li>
                 <li>🟨<strong>Amarillo:</strong> letra correcta pero en la posición incorrecta.</li>
                 <li>⬛<strong>Gris:</strong> letra incorrecta.</li>
@@ -83,154 +80,116 @@
         </div>
 
         <section id="seccion-juego" class="mt-10 text-center">
-            <h2 class="text-3xl font-bold mb-4">🎯 ¡Adivina la palabra!</h2>
-            <div id="area-juego" class="flex justify-center flex-col items-center">
-                <p id="area-tiempo" class="text-lg font-semibold mb-4">Tiempo restante: <span
-                        id="mostrar-tiempo">200</span></p>
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">🎯 ¡Adivina la palabra!</h2>
+            <div id="area-juego" class="flex flex-col items-center">
+                <p id="area-tiempo" class="text-lg font-semibold mb-4">Tiempo restante: <span id="mostrar-tiempo">200</span></p>
 
-                <div id="cuadricula-letras" class="mb-4 space-y-1">
-                    <div class="flex justify-center gap-1">
-                        <input id="celda-0-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-0-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-0-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-0-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-0-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+                <div id="cuadricula-letras" class="mb-4 space-y-1 w-full max-w-xs md:max-w-md mx-auto">
+                    <!-- 6 filas de 5 celdas cada una -->
+                    <!-- Se repite la misma estructura para todas las filas -->
+                    <div class="grid grid-cols-5 gap-1">
+                        <input id="celda-0-0" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-1" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-2" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-3" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-0-4" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
-                    <div class="flex justify-center gap-1">
-                        <input id="celda-1-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-1-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+
+                    <div class="grid grid-cols-5 gap-1">
+                        <input id="celda-1-0" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-1" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-2" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-3" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-1-4" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
-                    <div class="flex justify-center gap-1">
-                        <input id="celda-2-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-2-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+
+                    <div class="grid grid-cols-5 gap-1">
+                        <input id="celda-2-0" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-1" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-2" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-3" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-2-4" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
-                    <div class="flex justify-center gap-1">
-                        <input id="celda-3-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-3-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+
+                    <div class="grid grid-cols-5 gap-1">
+                        <input id="celda-3-0" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-1" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-2" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-3" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-3-4" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
-                    <div class="flex justify-center gap-1">
-                        <input id="celda-4-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-4-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+
+                    <div class="grid grid-cols-5 gap-1">
+                        <input id="celda-4-0" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-1" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-2" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-3" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-4-4" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
-                    <div class="flex justify-center gap-1">
-                        <input id="celda-5-0" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-1" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-2" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-3" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
-                        <input id="celda-5-4" maxlength="1"
-                            class="campo-letra w-12 h-12 text-center text-2xl uppercase border-2 border-gray-500" />
+
+                    <div class="grid grid-cols-5 gap-1">
+                        <input id="celda-5-0" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-1" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-2" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-3" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
+                        <input id="celda-5-4" maxlength="1" class="campo-letra w-full aspect-square text-center text-2xl uppercase border-2 border-gray-500" />
                     </div>
                 </div>
 
-                <button id="boton-comprobar" onclick="verificarIntento()"
+                <button id="boton-comprobar"
                     class="mt-4 bg-green-500 text-white font-bold py-2 px-6 rounded hover:bg-green-600">Comprobar</button>
                 <p id="mostrar-mensaje" class="mt-4 text-lg font-semibold"></p>
             </div>
 
-            <div class="flex justify-center gap-1 py-1 mt-5">
-                <button id="teclaA" onclick="agregarLetra('A')"" class=" teclado w-12 h-14 text-center text-2xl
-                    uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">A</button>
-                <button id="teclaB" onclick="agregarLetra('B')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">B</button>
-                <button id="teclaC" onclick="agregarLetra('C')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">C</button>
-                <button id="teclaD" onclick="agregarLetra('D')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">D</button>
-                <button id="teclaE" onclick="agregarLetra('E')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">E</button>
-                <button id="teclaF" onclick="agregarLetra('F')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">F</button>
-                <button id="teclaG" onclick="agregarLetra('G')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">G</button>
-                <button id="teclaH" onclick="agregarLetra('H')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">H</button>
-                <button id="teclaI" onclick="agregarLetra('I')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">I</button>
-                <button id="teclaJ" onclick="agregarLetra('J')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">J</button>
-                <button id="teclaK" onclick="agregarLetra('K')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">K</button>
-                <button id="teclaL" onclick="agregarLetra('L')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">L</button>
-                <button id="teclaM" onclick="agregarLetra('M')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">M</button>
-                <button id="secreto" onclick="botonSecreto()"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">?</button>
+            <!-- Teclado completo -->
+            <div class="flex flex-wrap justify-center gap-1 mt-5 max-w-xl mx-auto">
+                <!-- Fila 1 -->
+                <button onclick="agregarLetra('A')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">A</button>
+                <button onclick="agregarLetra('B')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">B</button>
+                <button onclick="agregarLetra('C')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">C</button>
+                <button onclick="agregarLetra('D')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">D</button>
+                <button onclick="agregarLetra('E')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">E</button>
+                <button onclick="agregarLetra('F')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">F</button>
+                <button onclick="agregarLetra('G')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">G</button>
+                <button onclick="agregarLetra('H')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">H</button>
+                <button onclick="agregarLetra('I')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">I</button>
+                <button onclick="agregarLetra('J')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">J</button>
+                <button onclick="agregarLetra('K')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">K</button>
+                <button onclick="agregarLetra('L')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">L</button>
+                <button onclick="agregarLetra('M')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">M</button>
             </div>
 
-            <div class="flex justify-center gap-1 py-3">
-                <button id="teclaN" onclick="agregarLetra('N')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">N</button>
-                <button id="teclaÑ" onclick="agregarLetra('Ñ')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Ñ</button>
-                <button id="teclaO" onclick="agregarLetra('O')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">O</button>
-                <button id="teclaP" onclick="agregarLetra('P')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">P</button>
-                <button id="teclaQ" onclick="agregarLetra('Q')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Q</button>
-                <button id="teclaR" onclick="agregarLetra('R')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">R</button>
-                <button id="teclaS" onclick="agregarLetra('S')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">S</button>
-                <button id="teclaT" onclick="agregarLetra('T')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">T</button>
-                <button id="teclaU" onclick="agregarLetra('U')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">U</button>
-                <button id="teclaV" onclick="agregarLetra('V')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">V</button>
-                <button id="teclaW" onclick="agregarLetra('W')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">W</button>
-                <button id="teclaX" onclick="agregarLetra('X')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">X</button>
-                <button id="teclaY" onclick="agregarLetra('Y')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Y</button>
-                <button id="teclaZ" onclick="agregarLetra('Z')"
-                    class="teclado w-12 h-14 text-center text-2xl uppercase border-2 border-gray-500 rounded-md text-white bg-slate-500">Z</button>
+            <div class="flex flex-wrap justify-center gap-1 mt-2 max-w-xl mx-auto">
+                <!-- Fila 2 -->
+                <button onclick="agregarLetra('N')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">N</button>
+                <button onclick="agregarLetra('Ñ')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">Ñ</button>
+                <button onclick="agregarLetra('O')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">O</button>
+                <button onclick="agregarLetra('P')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">P</button>
+                                <button onclick="agregarLetra('Q')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">Q</button>
+                <button onclick="agregarLetra('R')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">R</button>
+                <button onclick="agregarLetra('S')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">S</button>
+                <button onclick="agregarLetra('T')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">T</button>
+                <button onclick="agregarLetra('U')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">U</button>
+                <button onclick="agregarLetra('V')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">V</button>
+                <button onclick="agregarLetra('W')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">W</button>
+                <button onclick="agregarLetra('X')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">X</button>
+                <button onclick="agregarLetra('Y')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">Y</button>
+                <button onclick="agregarLetra('Z')" class="teclado w-10 md:w-12 h-12 md:h-14 text-center text-xl md:text-2xl border-2 border-gray-500 rounded-md bg-slate-500 text-white">Z</button>
             </div>
+
+            <div class="flex justify-center gap-2 mt-3">
+                <button onclick="borrarLetra()"
+                    class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600">Borrar</button>
+                <button onclick="enviarPalabra()"
+                    class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600">Enter</button>
+            </div>
+
         </section>
     </main>
+
+    <footer class="bg-green-200 text-white text-center p-4 mt-10">
+        <p>&copy; 2025 Wordle Clone - Todos los derechos reservados.</p>
+    </footer>
 
     <script>
         const palabrasPosibles = [
