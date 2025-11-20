@@ -61,4 +61,10 @@ Cada intento ofrece pistas de colores para ayudarte a descubrir la palabra secre
 
 ---
 
+## 🧪 Prueba el Proyecto
+
+* Puedes probar la aplicación aquí:
+
+* 👉 [Pagina de criptomonedas](https://wordle-copia.vercel.app/)
+
 ⭐ **Si te gusta este proyecto, deja una estrella en GitHub para apoyar su desarrollo.**
